@@ -28,10 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * Counter1 says "count is not defined" while counter2 returns 0.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter1 uses a closure because all functions and variables it is using are inside its function
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 
+ * 
 */
 
 // counter1 code
@@ -41,6 +46,8 @@ function counterMaker() {
    return count++;
   }
 }
+
+
 
 const counter1 = counterMaker();
 
@@ -56,11 +63,14 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
+inning()
+console.log(inning())
+
 function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+  let points = Math.floor(Math.random() * 3);
+  return points;
 }
+
 
 /* Task 3: finalScore()
 
@@ -72,6 +82,7 @@ finalScore(inning, 9) might return:
 {
   "Home": 11,
   "Away": 5,
+
 }
 
 */ 
@@ -103,8 +114,39 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+
+function scoreboard(callback, numInnings) {
+  let newScore=0;
+  for (i = 0; i<numInnings; i++){
+    home = callback(inning);
+    homeScore = home + callback(inning);
+    away = callback(inning);
+    print = "inning: "+homeScore+" - "+away;
+    console.log(print)
+  }
+    
+}
+scoreboard(inning, 9)
+
+
+
+
+
+
+
+
+
+function func1 (whenDoneDoThis){
+whenDoneDoThis(/*runMe*/)
 }
 
+//OR
 
+function func1 (callback){
+callback(/*runMe*/)
+}
+
+func1(runMe)
+
+function runMe(){
+}
