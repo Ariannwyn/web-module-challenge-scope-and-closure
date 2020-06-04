@@ -87,11 +87,23 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback, numInnings){
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0; i<numInnings; i++) {
+    homeScore += callback();
+    awayScore += callback();
+    
+  }
+  score = `Home: ${homeScore} Away: ${awayScore}`
+  console.log(score)
 }
+
+finalScore(inning, 9)
+
+
+
+
 
 /* Task 4: 
 
@@ -115,38 +127,25 @@ and returns the score at each pont in the game, like so:
 Final Score: 6 - 10 */
 
 
+
+let home=0;
+let away=0;
+
 function scoreboard(callback, numInnings) {
-  let newScore=0;
   for (i = 0; i<numInnings; i++){
-    home = callback(inning);
-    homeScore = home + callback(inning);
-    away = callback(inning);
-    print = "inning: "+homeScore+" - "+away;
-    console.log(print)
+    home = callback(inning) + home;
+    away = callback(inning) + away;
+    console.log(`inning: ${home} - ${away}`)
+    if (i >= numInnings-1){
+      finalscore(home, away)
+      
   }
     
+}
 }
 scoreboard(inning, 9)
 
 
-
-
-
-
-
-
-
-function func1 (whenDoneDoThis){
-whenDoneDoThis(/*runMe*/)
-}
-
-//OR
-
-function func1 (callback){
-callback(/*runMe*/)
-}
-
-func1(runMe)
-
-function runMe(){
-}
+// function finalscore(home, away){
+//   console.log(`Home: ${home} Away: ${away}`)
+// }
