@@ -36,11 +36,11 @@ function processFirstItem(stringList, callback) {
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  * 
- * 
+ * Counter1 would be better in situations where you want to save memory if you were only going to use count for this function. Counter 2 would be better if you wanted to use count in multiple functions.
 */
 
 // counter1 code
-function counterMaker() {
+counterMaker=()=> {
   let count = 0;
   return function counter() {
    return count++;
@@ -54,7 +54,7 @@ const counter1 = counterMaker();
 // counter2 code
 let count = 0;
 
-function counter2() {
+counter2=()=> {
   return count++;
 }
 
@@ -87,7 +87,7 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(callback, numInnings){
+finalScore=(callback, numInnings)=>{
   let homeScore = 0;
   let awayScore = 0;
   for (let i = 0; i<numInnings; i++) {
@@ -131,7 +131,7 @@ Final Score: 6 - 10 */
 let home=0;
 let away=0;
 
-function scoreboard(callback, numInnings) {
+scoreboard=(callback, numInnings)=>{
   for (i = 0; i<numInnings; i++){
     home = callback(inning) + home;
     away = callback(inning) + away;
@@ -146,6 +146,6 @@ function scoreboard(callback, numInnings) {
 scoreboard(inning, 9)
 
 
-// function finalscore(home, away){
-//   console.log(`Home: ${home} Away: ${away}`)
-// }
+function finalscore(home, away){
+  console.log(`Home: ${home} Away: ${away}`)
+}

@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Closure is when you have a function enclosed inside another function. It is "local" to another function.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+Closure is used with function() inside of personalDice. You can tell because the function is enclosed inside another function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The name will always be the same but the dice roll will change. 
+
 c. What is the lexical scope of `newRoll`? 
+
+newRoll is enclosed within function() and is local to it. 
 
 ### Task 3 - Stretch Goals
 
