@@ -28,26 +28,33 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * Counter1 says "count is not defined" while counter2 returns 0.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter1 uses a closure because all functions and variables it is using are inside its function
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 
+ * Counter1 would be better in situations where you want to save memory if you were only going to use count for this function. Counter 2 would be better if you wanted to use count in multiple functions.
 */
 
 // counter1 code
-function counterMaker() {
+counterMaker=()=> {
   let count = 0;
   return function counter() {
    return count++;
   }
 }
 
+
+
 const counter1 = counterMaker();
 
 // counter2 code
 let count = 0;
 
-function counter2() {
+counter2=()=> {
   return count++;
 }
 
@@ -56,11 +63,14 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
+inning()
+console.log(inning())
+
 function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+  let points = Math.floor(Math.random() * 3);
+  return points;
 }
+
 
 /* Task 3: finalScore()
 
@@ -72,15 +82,28 @@ finalScore(inning, 9) might return:
 {
   "Home": 11,
   "Away": 5,
+
 }
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+finalScore=(callback, numInnings)=>{
+  let homeScore = 0;
+  let awayScore = 0;
+  for (let i = 0; i<numInnings; i++) {
+    homeScore += callback();
+    awayScore += callback();
+    
+  }
+  score = `Home: ${homeScore} Away: ${awayScore}`
+  console.log(score)
 }
+
+finalScore(inning, 9)
+
+
+
+
 
 /* Task 4: 
 
@@ -103,8 +126,26 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+
+
+let home=0;
+let away=0;
+
+scoreboard=(callback, numInnings)=>{
+  for (i = 0; i<numInnings; i++){
+    home = callback(inning) + home;
+    away = callback(inning) + away;
+    console.log(`inning: ${home} - ${away}`)
+    if (i >= numInnings-1){
+      finalscore(home, away)
+      
+  }
+    
 }
+}
+scoreboard(inning, 9)
 
 
+function finalscore(home, away){
+  console.log(`Home: ${home} Away: ${away}`)
+}
